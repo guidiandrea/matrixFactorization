@@ -9,3 +9,5 @@ These two matrices U (which is supposed to incorporate the singular values) and 
 
 This falls inside the category of Collaborative Filtering methods, in fact it can't be used for a new user, it suffers of the cold start problem.
 
+
+I based the implementation of the Charu Aggarwal's book on Recommender Systems by Springer.
