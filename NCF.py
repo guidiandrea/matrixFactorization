@@ -63,4 +63,28 @@ class MaskedSumOfSquares(gluon.loss.Loss):
         
         return nd.sum(nd.abs(masked_output-label)**2)         
             
+
+class InputDataset(gluon.data.Dataset):
+    
+    def __init__(self,data):
+        
+        if not isinstance(data, mx.ndarray.ndarray.NDArray):
             
+            raise TypeError("data must be of type nd.array")
+        
+        self.length = len(data)
+        self.data = data
+        
+    def __getitem__(self, idx):
+        
+        userId = self.data[idx,0].astype('int32')
+        itemId = self.data[idx,1].astype('int32')
+        rating = self.data[idx,2].astype('int8')
+        
+        return userId,itemId,rating
+    
+    def __len__(self):
+        
+        return self.length
+    
+        
